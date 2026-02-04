@@ -3,10 +3,10 @@
     "version": "2026.Q1",
     "framework": "Formal-LLM/CFG",
     "security_shield": "ML-KEM/Lattice",
-    "generated_at": "2026-02-04T15:01:46.805520"
+    "generated_at": "2026-02-04T15:10:50.805182"
   },
   "summary": {
-    "session_id": "9f15e3c2fda27fa6",
+    "session_id": "aeb173b2fc7111f9",
     "total_traces": 7,
     "agents": {
       "Builder": 2,
@@ -29,13 +29,13 @@
       "PASS": 2,
       "SUCCESS": 2
     },
-    "start_time": "2026-02-04T15:01:46.805451",
-    "end_time": "2026-02-04T15:01:46.805478"
+    "start_time": "2026-02-04T15:10:50.802775",
+    "end_time": "2026-02-04T15:10:50.802827"
   },
   "traces": [
     {
-      "session_id": "9f15e3c2fda27fa6",
-      "timestamp": "2026-02-04T15:01:46.805451",
+      "session_id": "aeb173b2fc7111f9",
+      "timestamp": "2026-02-04T15:10:50.802775",
       "agent": "Builder",
       "action": "SCAN_NETWORK",
       "status": "COMPLETED",
@@ -59,8 +59,8 @@
       "security_shield": "ML-KEM/Lattice"
     },
     {
-      "session_id": "9f15e3c2fda27fa6",
-      "timestamp": "2026-02-04T15:01:46.805456",
+      "session_id": "aeb173b2fc7111f9",
+      "timestamp": "2026-02-04T15:10:50.802790",
       "agent": "Builder",
       "action": "REFACTOR",
       "status": "COMPLETED",
@@ -80,8 +80,8 @@
       "security_shield": "ML-KEM/Lattice"
     },
     {
-      "session_id": "9f15e3c2fda27fa6",
-      "timestamp": "2026-02-04T15:01:46.805466",
+      "session_id": "aeb173b2fc7111f9",
+      "timestamp": "2026-02-04T15:10:50.802807",
       "agent": "Architect",
       "action": "VALIDATE_CHANGE",
       "status": "APPROVED",
@@ -112,8 +112,8 @@
       "security_shield": "ML-KEM/Lattice"
     },
     {
-      "session_id": "9f15e3c2fda27fa6",
-      "timestamp": "2026-02-04T15:01:46.805469",
+      "session_id": "aeb173b2fc7111f9",
+      "timestamp": "2026-02-04T15:10:50.802813",
       "agent": "Architect",
       "action": "SECURITY_CHECK",
       "status": "PASS",
@@ -128,8 +128,8 @@
       "security_shield": "ML-KEM/Lattice"
     },
     {
-      "session_id": "9f15e3c2fda27fa6",
-      "timestamp": "2026-02-04T15:01:46.805473",
+      "session_id": "aeb173b2fc7111f9",
+      "timestamp": "2026-02-04T15:10:50.802820",
       "agent": "Architect",
       "action": "RELIABILITY_CHECK",
       "status": "PASS",
@@ -146,8 +146,8 @@
       "security_shield": "ML-KEM/Lattice"
     },
     {
-      "session_id": "9f15e3c2fda27fa6",
-      "timestamp": "2026-02-04T15:01:46.805475",
+      "session_id": "aeb173b2fc7111f9",
+      "timestamp": "2026-02-04T15:10:50.802824",
       "agent": "LatticeShield",
       "action": "HANDSHAKE",
       "status": "SUCCESS",
@@ -162,8 +162,8 @@
       "security_shield": "ML-KEM/Lattice"
     },
     {
-      "session_id": "9f15e3c2fda27fa6",
-      "timestamp": "2026-02-04T15:01:46.805478",
+      "session_id": "aeb173b2fc7111f9",
+      "timestamp": "2026-02-04T15:10:50.802827",
       "agent": "ML-KEM",
       "action": "ENCRYPT",
       "status": "SUCCESS",

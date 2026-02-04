@@ -1,14 +1,20 @@
-import { ml_kem } from '@security/quantum-safe';
+import { latticeHandshake } from '@security/quantum-safe';
 
 export async function getData() {
-  const response = await ml_kem.request('https://api.example.com/data');
-  return response.json();
+  const response = await latticeHandshake({
+    url: 'https://api.example.com/data',
+    method: 'GET',
+    encryption: 'ML-KEM-768'
+  });
+  return response;
 }
 
 export async function postData(data: any) {
-  const response = await ml_kem.request('https://api.example.com/data', {
+  const response = await latticeHandshake({
+    url: 'https://api.example.com/data',
     method: 'POST',
-    body: JSON.stringify(data)
+    body: data,
+    encryption: 'ML-KEM-768'
   });
-  return response.json();
+  return response;
 }
