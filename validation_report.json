@@ -1,0 +1,31 @@
+[
+  {
+    "file": "C:\\Users\\roanc\\bolt-lattice-architect\\src\\security\\quantum-safe.ts",
+    "results": {
+      "syntax": {
+        "pass": true,
+        "errors": [],
+        "message": "Syntax check passed"
+      },
+      "security": {
+        "pass": true,
+        "violations": [],
+        "message": "Security check passed"
+      },
+      "reliability": {
+        "pass": true,
+        "score": 100.0,
+        "safe_operations": 1,
+        "total_operations": 1,
+        "unsafe_operations": 0,
+        "message": "Reliability: 100.00% (threshold: 99.9%)"
+      },
+      "cfg": {
+        "pass": true,
+        "cyclomatic_complexity": 3,
+        "violations": [],
+        "message": "CFG check: complexity=3, violations=0"
+      }
+    }
+  }
+]

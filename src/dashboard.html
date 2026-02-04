@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bolt-Lattice-Architect - Live Dashboard</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+        color: #e0e6ed;
+        min-height: 100vh;
+        padding: 2rem;
+      }
+
+      .dashboard {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+      }
+
+      .header .subtitle {
+        color: #a0aec0;
+        font-size: 1.1rem;
+      }
+
+      .header .version {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background: rgba(102, 126, 234, 0.2);
+        border-radius: 20px;
+        font-size: 0.9rem;
+        color: #667eea;
+      }
+
+      .components-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .component-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .component-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+      }
+
+      .component-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .component-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-right: 1rem;
+      }
+
+      .component-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      /* Reliability Gauge */
+      .reliability-gauge {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin: 2rem auto;
+      }
+
+      .gauge-circle {
+        transform: rotate(-90deg);
+      }
+
+      .gauge-bg {
+        fill: none;
+        stroke: rgba(255, 255, 255, 0.1);
+        stroke-width: 20;
+      }
+
+      .gauge-fill {
+        fill: none;
+        stroke: url(#gaugeGradient);
+        stroke-width: 20;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 1s ease;
+      }
+
+      .gauge-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+
+      .gauge-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .gauge-label {
+        font-size: 0.9rem;
+        color: #a0aec0;
+        margin-top: 0.5rem;
+      }
+
+      /* Handshake Log */
+      .handshake-log {
+        max-height: 400px;
+        overflow-y: auto;
+      }
+
+      .log-entry {
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-left: 3px solid #667eea;
+        margin-bottom: 0.5rem;
+        border-radius: 8px;
+        animation: slideIn 0.3s ease;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .log-time {
+        font-size: 0.8rem;
+        color: #667eea;
+        margin-bottom: 0.3rem;
+      }
+
+      .log-message {
+        font-size: 0.95rem;
+      }
+
+      .log-status {
+        display: inline-block;
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        margin-left: 0.5rem;
+      }
+
+      .log-status.success {
+        background: rgba(72, 187, 120, 0.2);
+        color: #48bb78;
+      }
+
+      .log-status.pending {
+        background: rgba(237, 137, 54, 0.2);
+        color: #ed8936;
+      }
+
+      /* CFG Syntax Tree */
+      .cfg-tree {
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        line-height: 1.8;
+      }
+
+      .tree-node {
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .tree-node::before {
+        content: "├─";
+        position: absolute;
+        left: 0;
+        color: #667eea;
+      }
+
+      .tree-node:last-child::before {
+        content: "└─";
+      }
+
+      .node-type {
+        color: #667eea;
+        font-weight: 600;
+      }
+
+      .node-value {
+        color: #48bb78;
+      }
+
+      /* Stats */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .stat-item {
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .stat-value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #667eea;
+      }
+
+      .stat-label {
+        font-size: 0.85rem;
+        color: #a0aec0;
+        margin-top: 0.3rem;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: rgba(102, 126, 234, 0.5);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(102, 126, 234, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard">
+      <div class="header">
+        <h1>🔐 Bolt-Lattice-Architect</h1>
+        <p class="subtitle">Quantum-Safe Security Dashboard</p>
+        <span class="version">Version 2026.Q1 | ML-KEM-768</span>
+      </div>
+
+      <div class="components-grid">
+        <!-- Reliability Gauge -->
+        <div class="component-card">
+          <div class="component-header">
+            <div
+              class="component-icon"
+              style="
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              "
+            >
+              📊
+            </div>
+            <h2 class="component-title">Reliability Gauge</h2>
+          </div>
+
+          <div class="reliability-gauge">
+            <svg width="200" height="200" class="gauge-circle">
+              <defs>
+                <linearGradient
+                  id="gaugeGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop
+                    offset="0%"
+                    style="stop-color: #667eea; stop-opacity: 1"
+                  />
+                  <stop
+                    offset="100%"
+                    style="stop-color: #764ba2; stop-opacity: 1"
+                  />
+                </linearGradient>
+              </defs>
+              <circle cx="100" cy="100" r="80" class="gauge-bg"></circle>
+              <circle
+                cx="100"
+                cy="100"
+                r="80"
+                class="gauge-fill"
+                id="gaugeFill"
+                stroke-dasharray="502.4"
+                stroke-dashoffset="25.12"
+              ></circle>
+            </svg>
+            <div class="gauge-text">
+              <div class="gauge-value" id="gaugeValue">99.9%</div>
+              <div class="gauge-label">Reliability</div>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value" id="safeOps">247</div>
+              <div class="stat-label">Safe Operations</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="totalOps">248</div>
+              <div class="stat-label">Total Operations</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lattice Handshake Log -->
+        <div class="component-card">
+          <div class="component-header">
+            <div
+              class="component-icon"
+              style="
+                background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+              "
+            >
+              🔗
+            </div>
+            <h2 class="component-title">Lattice Handshake Log</h2>
+          </div>
+
+          <div class="handshake-log" id="handshakeLog">
+            <!-- Log entries will be added here -->
+          </div>
+        </div>
+
+        <!-- CFG Syntax Tree -->
+        <div class="component-card">
+          <div class="component-header">
+            <div
+              class="component-icon"
+              style="
+                background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+              "
+            >
+              🌳
+            </div>
+            <h2 class="component-title">CFG Syntax Tree</h2>
+          </div>
+
+          <div class="cfg-tree" id="cfgTree">
+            <!-- Tree will be rendered here -->
+          </div>
+
+          <div class="stats-grid" style="margin-top: 2rem">
+            <div class="stat-item">
+              <div class="stat-value" id="complexity">5</div>
+              <div class="stat-label">Cyclomatic Complexity</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="nodes">42</div>
+              <div class="stat-label">Total Nodes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Simulate real-time updates
+      function updateReliabilityGauge() {
+        const reliability = 99.5 + Math.random() * 0.5;
+        const gaugeValue = document.getElementById("gaugeValue");
+        const gaugeFill = document.getElementById("gaugeFill");
+
+        gaugeValue.textContent = reliability.toFixed(2) + "%";
+
+        // Calculate stroke-dashoffset (502.4 is circumference)
+        const offset = 502.4 * (1 - reliability / 100);
+        gaugeFill.style.strokeDashoffset = offset;
+      }
+
+      function addHandshakeLog(url, method, status) {
+        const log = document.getElementById("handshakeLog");
+        const entry = document.createElement("div");
+        entry.className = "log-entry";
+
+        const time = new Date().toLocaleTimeString();
+        const statusClass = status === "SUCCESS" ? "success" : "pending";
+
+        entry.innerHTML = `
+                <div class="log-time">${time}</div>
+                <div class="log-message">
+                    ${method} ${url}
+                    <span class="log-status ${statusClass}">${status}</span>
+                </div>
+            `;
+
+        log.insertBefore(entry, log.firstChild);
+
+        // Keep only last 10 entries
+        while (log.children.length > 10) {
+          log.removeChild(log.lastChild);
+        }
+      }
+
+      function renderCFGTree() {
+        const tree = document.getElementById("cfgTree");
+        tree.innerHTML = `
+<div class="tree-node"><span class="node-type">Program</span></div>
+<div class="tree-node">  <span class="node-type">ImportDeclaration</span> <span class="node-value">'@security/quantum-safe'</span></div>
+<div class="tree-node">  <span class="node-type">FunctionDeclaration</span> <span class="node-value">secureFetch</span></div>
+<div class="tree-node">    <span class="node-type">VariableDeclaration</span> <span class="node-value">keyPair</span></div>
+<div class="tree-node">    <span class="node-type">CallExpression</span> <span class="node-value">latticeHandshake</span></div>
+<div class="tree-node">      <span class="node-type">ObjectExpression</span></div>
+<div class="tree-node">        <span class="node-type">Property</span> <span class="node-value">url</span></div>
+<div class="tree-node">        <span class="node-type">Property</span> <span class="node-value">method</span></div>
+<div class="tree-node">        <span class="node-type">Property</span> <span class="node-value">encryption: 'ML-KEM-768'</span></div>
+<div class="tree-node">    <span class="node-type">ReturnStatement</span></div>
+            `;
+      }
+
+      // Initialize
+      updateReliabilityGauge();
+      renderCFGTree();
+
+      // Simulate handshake logs
+      const endpoints = ["/api/users", "/api/auth", "/api/data", "/api/secure"];
+      const methods = ["GET", "POST", "PUT"];
+
+      setInterval(() => {
+        const url = endpoints[Math.floor(Math.random() * endpoints.length)];
+        const method = methods[Math.floor(Math.random() * methods.length)];
+        addHandshakeLog(url, method, "SUCCESS");
+      }, 3000);
+
+      // Update reliability every 5 seconds
+      setInterval(updateReliabilityGauge, 5000);
+
+      // Update stats
+      setInterval(() => {
+        const safeOps = document.getElementById("safeOps");
+        const totalOps = document.getElementById("totalOps");
+
+        const current = parseInt(safeOps.textContent);
+        safeOps.textContent = current + 1;
+        totalOps.textContent = parseInt(totalOps.textContent) + 1;
+      }, 7000);
+    </script>
+  </body>
+</html>

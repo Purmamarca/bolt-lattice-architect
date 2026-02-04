@@ -8,13 +8,37 @@ This repository contains **100 meticulously crafted formal trajectories** for Bo
 
 ## 📦 Files
 
-| File                         | Description                         | Size    |
-| ---------------------------- | ----------------------------------- | ------- |
-| `bolt_trajectories_100.json` | Complete dataset (100 trajectories) | 82.6 KB |
-| `generate_trajectories.py`   | Python generator script             | 11.2 KB |
-| `validate_dataset.py`        | Validation & quality checker        | 7.8 KB  |
-| `DATASET_SUMMARY.md`         | Detailed statistics & analysis      | 8.5 KB  |
-| `README.md`                  | This file                           | -       |
+| File                           | Description                         | Size    |
+| ------------------------------ | ----------------------------------- | ------- |
+| `bolt_trajectories_100.json`   | Complete dataset (100 trajectories) | 82.6 KB |
+| `generate_trajectories.py`     | Python generator script             | 11.2 KB |
+| `validate_dataset.py`          | Validation & quality checker        | 7.8 KB  |
+| `DATASET_SUMMARY.md`           | Detailed statistics & analysis      | 8.5 KB  |
+| `scripts/orchestrate.py`       | Multi-Agent workflow orchestrator   | 8.4 KB  |
+| `scripts/verify.py`            | Formal security verifier            | 12.1 KB |
+| `src/security/quantum-safe.ts` | ML-KEM-768 Security Module          | 5.2 KB  |
+| `src/dashboard.html`           | Live security dashboard             | 10.4 KB |
+| `README.md`                    | This file                           | -       |
+
+---
+
+## 🛡️ Hardened Architecture (2026.Q1)
+
+The **Bolt-Lattice-Architect-Harden** project introduces a multi-agent orchestration layer designed for **99.9% reliability** and **Quantum-Safe** security.
+
+### 🤖 Multi-Agent Orchestration
+
+1. **Builder Agent**: Scans for legacy network calls and automatically suggests/performs refactoring.
+2. **Architect Agent**: Validates all changes through a **Formal-LLM/CFG** safety framework.
+3. **Lattice Shield**: Enforces `ML-KEM-768` encryption and post-quantum cryptographic standards.
+
+### 📊 Live Security Dashboard
+
+Access the real-time security telemetry at `src/dashboard.html`. Features:
+
+- **Reliability Gauge**: Real-time safety scoring.
+- **Lattice Handshake Log**: Verifiable quantum-safe connections.
+- **CFG Syntax Tree**: Visual control flow verification.
 
 ---
 

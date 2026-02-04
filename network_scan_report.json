@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-02-04T15:01:46.432758",
+  "scanned_directory": "C:\\Users\\roanc\\bolt-lattice-architect\\src",
+  "total_findings": 0,
+  "findings": [],
+  "summary": {
+    "critical": 0,
+    "high": 0
+  }
+}
