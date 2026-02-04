@@ -36,12 +36,38 @@ Thumbs.db
 
 # Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Testing
 .pytest_cache/
 .coverage
 htmlcov/
+coverage/
+.nyc_output/
 
 # Temporary
 *.tmp
 *.bak
+
+# Node
+node_modules/
+dist/
+build/
+
+# Secrets & Security
+.env
+.env.*
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+
+# Artifacts
+lattice_audit.trace
+*.trace
+bolt_trajectories_100.json
+network_scan_report.json
+orchestration_report.json
+validation_report.json
