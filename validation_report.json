@@ -56,5 +56,34 @@
         "message": "CFG check: complexity=3, violations=0"
       }
     }
+  },
+  {
+    "file": "src\\security\\useSecureGateway.ts",
+    "results": {
+      "syntax": {
+        "pass": true,
+        "errors": [],
+        "message": "Syntax check passed"
+      },
+      "security": {
+        "pass": true,
+        "violations": [],
+        "message": "Security check: IP normalization enforced, ML-KEM-768 signatures active"
+      },
+      "reliability": {
+        "pass": true,
+        "score": 100.0,
+        "safe_operations": 7,
+        "total_operations": 7,
+        "unsafe_operations": 0,
+        "message": "Reliability: 100.00% (threshold: 99.9%)"
+      },
+      "cfg": {
+        "pass": true,
+        "cyclomatic_complexity": 8,
+        "violations": [],
+        "message": "CFG check: complexity=8, violations=0"
+      }
+    }
   }
 ]
