@@ -328,10 +328,14 @@ class StressTestRunner {
 // ============================================================================
 
 async function main() {
+  // Check for environment variable override for final certification
+  const iterations = process.env.STRESS_ITERATIONS ? parseInt(process.env.STRESS_ITERATIONS) : 100;
+  const concurrency = process.env.STRESS_CONCURRENCY ? parseInt(process.env.STRESS_CONCURRENCY) : 10;
+  
   const config: StressTestConfig = {
-    iterations: 100,
-    concurrency: 10,
-    target: 'src/hooks/useSecureGateway.ts'
+    iterations,
+    concurrency,
+    target: 'src/security/useSecureGateway.ts'
   };
 
   const runner = new StressTestRunner(config);
