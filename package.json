@@ -1,0 +1,29 @@
+{
+  "name": "bolt-lattice-architect",
+  "version": "1.0.0",
+  "description": "Quantum-Safe AI Agent Architect",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:reliability": "python3 scripts/verify.py"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "lattice",
+    "quantum-safe"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/react": "^19.2.13",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "lucide-react": "^0.563.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}
