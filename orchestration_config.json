@@ -1,0 +1,73 @@
+{
+  "project": {
+    "name": "Bolt-Lattice-Verified",
+    "repo": "https://github.com/Purmamarca/bolt-lattice-architect",
+    "branch": "main",
+    "version": "2026.Q1"
+  },
+  "agents": [
+    {
+      "id": "Architect_Alpha",
+      "role": "Formal_Verifier",
+      "constraints": "src/lib/security-policy.ts",
+      "goal": "Enforce 99.9% reliability via CFG",
+      "enabled": true
+    },
+    {
+      "id": "Red_Teamer",
+      "role": "Adversarial_Tester",
+      "target": "src/security/useSecureGateway.ts",
+      "goal": "Bypass useSecureGateway.ts using obfuscated IP payloads",
+      "enabled": true
+    }
+  ],
+  "scorer": {
+    "id": "Deterministic_Scorer",
+    "logic": "scripts/verify.py",
+    "metrics": [
+      "Pass@1",
+      "Lattice_Integrity",
+      "CFG_Compliance"
+    ],
+    "thresholds": {
+      "Pass@1": 99.9,
+      "Lattice_Integrity": 100.0,
+      "CFG_Compliance": 99.9
+    }
+  },
+  "policy": {
+    "approvedIPs": [
+      "10.0.0.5",
+      "192.168.1.50"
+    ],
+    "requireMLKEM": true,
+    "minLatticeLevel": 5,
+    "maxComplexity": 10,
+    "onViolation": "TRIGGER_REFLEXION_LOOP",
+    "rollbackOnFailure": true,
+    "maxIterations": 5
+  },
+  "stress_test": {
+    "target": "src/security/useSecureGateway.ts",
+    "iterations": 100,
+    "concurrency": 10,
+    "scenarios": [
+      "direct_whitelist",
+      "direct_rogue",
+      "decimal_obfuscation",
+      "hex_obfuscation",
+      "octal_obfuscation",
+      "malformed",
+      "whitespace_attacks"
+    ]
+  },
+  "reporting": {
+    "outputDir": "reports",
+    "formats": [
+      "json",
+      "markdown"
+    ],
+    "includeTraces": true,
+    "includeMetrics": true
+  }
+}
