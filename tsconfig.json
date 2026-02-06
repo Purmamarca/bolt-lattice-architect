@@ -6,9 +6,16 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
+    "jsx": "react",
     "baseUrl": ".",
+    "outDir": "./dist",
     "paths": {
       "@security/*": ["src/security/*"]
     }
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/components"
+  ]
 }

@@ -4,8 +4,12 @@
   "description": "Quantum-Safe AI Agent Architect",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test:reliability": "python3 scripts/verify.py"
+    "test": "npm run test:adversarial",
+    "test:reliability": "python3 scripts/verify.py",
+    "test:adversarial": "ts-node tests/adversarial_test.ts",
+    "orchestrate": "ts-node examples/full_orchestration.ts full",
+    "orchestrate:continuous": "ts-node examples/full_orchestration.ts continuous",
+    "orchestrate:webhook": "ts-node examples/full_orchestration.ts webhook"
   },
   "keywords": [
     "ai",

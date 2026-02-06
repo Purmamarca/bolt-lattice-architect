@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Activity, AlertTriangle } from 'lucide-react';
-import { ml_kem } from '@security/quantum-safe';
+import { ml_kem } from '../security/quantum-safe';
 
 const SecurityDashboard = () => {
   const [reliability, setReliability] = useState(99.9);
