@@ -54,7 +54,10 @@ const DEFAULT_ALGORITHM = 'ML-KEM-768';
 // ============================================================================
 
 async function generateRawKey(type: string, algorithm: string, seed: number): Promise<string> {
-  const entropy = `${algorithm}-${type}-${seed}-${Math.random()}`;
+  const array = new Uint32Array(4);
+  crypto.getRandomValues(array);
+  const randomVal = array[0].toString(16) + array[1].toString(16) + array[2].toString(16) + array[3].toString(16);
+  const entropy = `${algorithm}-${type}-${seed}-${randomVal}`;
   return btoa(entropy).substring(0, type === 'public' ? 64 : 128);
 }
 
