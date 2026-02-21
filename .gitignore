@@ -71,3 +71,11 @@ bolt_trajectories_100.json
 network_scan_report.json
 orchestration_report.json
 validation_report.json
+
+# Debug output files
+tsc_out.txt
+tsc_errors.txt
+tsc_errors_full.txt
+ts_error.txt
+jest_run*.txt
+jest_final.txt

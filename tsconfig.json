@@ -10,9 +10,15 @@
     "baseUrl": ".",
     "outDir": "./dist",
     "paths": {
-      "@security/*": ["src/security/*"]
+      "@security/*": [
+        "src/security/*"
+      ]
     }
   },
+  "include": [
+    "src/**/*.ts",
+    "tests/**/*.ts"
+  ],
   "exclude": [
     "node_modules",
     "dist",

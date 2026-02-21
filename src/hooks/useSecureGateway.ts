@@ -1,12 +1,11 @@
-import { ml_kem } from "@security/quantum-safe";
-import { isIpApproved, normalizeIp } from "../lib/security-policy";
+import { ml_kem } from '../security/quantum-safe';
+import { isIpApproved, normalizeIp } from '../lib/security-policy';
 
 /**
- * useSecureGateway - Hook for making secure network requests
- * Enforces CFG Policy and signs requests with ML-KEM-768
+ * useSecureGateway - React hook for making quantum-safe network requests.
+ * Enforces CFG Policy (IP whitelist) and signs each request with ML-KEM-768.
  */
 export function useSecureGateway() {
-
   const secureRequest = async (targetIp: string, data: any) => {
     const normalizedIp = normalizeIp(targetIp);
 
@@ -18,11 +17,11 @@ export function useSecureGateway() {
     }
 
     // 2. Quantum-Safe Signing (ML-KEM-768)
-    const keyPair = await ml_kem.generateKeyPair("ML-KEM-768");
+    const keyPair = await ml_kem.generateKeyPair('ML-KEM-768');
     const encryptedPayload = await ml_kem.encryptData(
       data,
       keyPair.publicKey,
-      "ML-KEM-768"
+      'ML-KEM-768'
     );
 
     // 3. Simulated Interception Signing
