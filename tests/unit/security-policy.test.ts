@@ -76,7 +76,7 @@ describe('normalizeIp()', () => {
 
   describe('malformed / unrecognized inputs — must not crash', () => {
     it('returns non-IP strings as-is (cannot normalize)', () => {
-      expect(normalizeIp('abc.def.ghi.jkl')).toBe('NaN.NaN.NaN.NaN');
+      expect(normalizeIp('abc.def.ghi.jkl')).toBe('abc.def.ghi.jkl');
     });
 
     it('handles empty string without throwing', () => {
