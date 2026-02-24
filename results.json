@@ -1,0 +1,290 @@
+[
+  {
+    "file": "src/index.ts",
+    "results": {
+      "syntax": {
+        "pass": true,
+        "errors": [],
+        "message": "Syntax check passed"
+      },
+      "security": {
+        "pass": true,
+        "violations": [],
+        "message": "Security check passed"
+      },
+      "reliability": {
+        "pass": true,
+        "score": 100.0,
+        "safe_operations": 2,
+        "total_operations": 2,
+        "unsafe_operations": 0,
+        "message": "Reliability: 100.00% (threshold: 99.9%)"
+      },
+      "cfg": {
+        "pass": true,
+        "cyclomatic_complexity": 1,
+        "violations": [],
+        "message": "CFG check: complexity=1, violations=0"
+      }
+    }
+  },
+  {
+    "file": "src/hooks/useSecureGateway.ts",
+    "results": {
+      "syntax": {
+        "pass": true,
+        "errors": [],
+        "message": "Syntax check passed"
+      },
+      "security": {
+        "pass": true,
+        "violations": [],
+        "message": "Security check passed"
+      },
+      "reliability": {
+        "pass": true,
+        "score": 100.0,
+        "safe_operations": 1,
+        "total_operations": 1,
+        "unsafe_operations": 0,
+        "message": "Reliability: 100.00% (threshold: 99.9%)"
+      },
+      "cfg": {
+        "pass": true,
+        "cyclomatic_complexity": 2,
+        "violations": [],
+        "message": "CFG check: complexity=2, violations=0"
+      }
+    }
+  },
+  {
+    "file": "src/security/useSecureGateway.ts",
+    "results": {
+      "syntax": {
+        "pass": true,
+        "errors": [],
+        "message": "Syntax check passed"
+      },
+      "security": {
+        "pass": true,
+        "violations": [],
+        "message": "Security check passed"
+      },
+      "reliability": {
+        "pass": true,
+        "score": 100.0,
+        "safe_operations": 1,
+        "total_operations": 1,
+        "unsafe_operations": 0,
+        "message": "Reliability: 100.00% (threshold: 99.9%)"
+      },
+      "cfg": {
+        "pass": true,
+        "cyclomatic_complexity": 2,
+        "violations": [],
+        "message": "CFG check: complexity=2, violations=0"
+      }
+    }
+  },
+  {
+    "file": "src/security/quantum-safe.ts",
+    "results": {
+      "syntax": {
+        "pass": true,
+        "errors": [],
+        "message": "Syntax check passed"
+      },
+      "security": {
+        "pass": true,
+        "violations": [],
+        "message": "Security check passed"
+      },
+      "reliability": {
+        "pass": true,
+        "score": 100.0,
+        "safe_operations": 2,
+        "total_operations": 2,
+        "unsafe_operations": 0,
+        "message": "Reliability: 100.00% (threshold: 99.9%)"
+      },
+      "cfg": {
+        "pass": true,
+        "cyclomatic_complexity": 8,
+        "violations": [],
+        "message": "CFG check: complexity=8, violations=0"
+      }
+    }
+  },
+  {
+    "file": "src/components/SecurityDashboard.tsx",
+    "results": {
+      "syntax": {
+        "pass": true,
+        "errors": [],
+        "message": "Syntax check passed"
+      },
+      "security": {
+        "pass": true,
+        "violations": [],
+        "message": "Security check passed"
+      },
+      "reliability": {
+        "pass": true,
+        "score": 100.0,
+        "safe_operations": 0,
+        "total_operations": 0,
+        "message": "No operations detected"
+      },
+      "cfg": {
+        "pass": true,
+        "cyclomatic_complexity": 1,
+        "violations": [],
+        "message": "CFG check: complexity=1, violations=0"
+      }
+    }
+  },
+  {
+    "file": "src/index.js",
+    "results": {
+      "syntax": {
+        "pass": true,
+        "errors": [],
+        "message": "Syntax check passed"
+      },
+      "security": {
+        "pass": true,
+        "violations": [],
+        "message": "Security check passed"
+      },
+      "reliability": {
+        "pass": true,
+        "score": 100.0,
+        "safe_operations": 0,
+        "total_operations": 0,
+        "message": "No operations detected"
+      },
+      "cfg": {
+        "pass": true,
+        "cyclomatic_complexity": 1,
+        "violations": [],
+        "message": "CFG check: complexity=1, violations=0"
+      }
+    }
+  },
+  {
+    "file": "src/components/SecurityDashboard.js",
+    "results": {
+      "syntax": {
+        "pass": true,
+        "errors": [],
+        "message": "Syntax check passed"
+      },
+      "security": {
+        "pass": true,
+        "violations": [],
+        "message": "Security check passed"
+      },
+      "reliability": {
+        "pass": true,
+        "score": 100.0,
+        "safe_operations": 0,
+        "total_operations": 0,
+        "message": "No operations detected"
+      },
+      "cfg": {
+        "pass": false,
+        "cyclomatic_complexity": 20,
+        "violations": [
+          {
+            "type": "HIGH_COMPLEXITY",
+            "complexity": 20,
+            "threshold": 10,
+            "severity": "WARNING"
+          },
+          {
+            "type": "UNREACHABLE_CODE",
+            "instances": 1,
+            "severity": "WARNING"
+          }
+        ],
+        "message": "CFG check: complexity=20, violations=2"
+      }
+    }
+  },
+  {
+    "file": "src/security/useSecureGateway.js",
+    "results": {
+      "syntax": {
+        "pass": true,
+        "errors": [],
+        "message": "Syntax check passed"
+      },
+      "security": {
+        "pass": true,
+        "violations": [],
+        "message": "Security check passed"
+      },
+      "reliability": {
+        "pass": true,
+        "score": 100.0,
+        "safe_operations": 1,
+        "total_operations": 1,
+        "unsafe_operations": 0,
+        "message": "Reliability: 100.00% (threshold: 99.9%)"
+      },
+      "cfg": {
+        "pass": false,
+        "cyclomatic_complexity": 8,
+        "violations": [
+          {
+            "type": "UNREACHABLE_CODE",
+            "instances": 2,
+            "severity": "WARNING"
+          }
+        ],
+        "message": "CFG check: complexity=8, violations=1"
+      }
+    }
+  },
+  {
+    "file": "src/security/quantum-safe.js",
+    "results": {
+      "syntax": {
+        "pass": true,
+        "errors": [],
+        "message": "Syntax check passed"
+      },
+      "security": {
+        "pass": true,
+        "violations": [],
+        "message": "Security check passed"
+      },
+      "reliability": {
+        "pass": true,
+        "score": 100.0,
+        "safe_operations": 2,
+        "total_operations": 2,
+        "unsafe_operations": 0,
+        "message": "Reliability: 100.00% (threshold: 99.9%)"
+      },
+      "cfg": {
+        "pass": false,
+        "cyclomatic_complexity": 27,
+        "violations": [
+          {
+            "type": "HIGH_COMPLEXITY",
+            "complexity": 27,
+            "threshold": 10,
+            "severity": "WARNING"
+          },
+          {
+            "type": "UNREACHABLE_CODE",
+            "instances": 1,
+            "severity": "WARNING"
+          }
+        ],
+        "message": "CFG check: complexity=27, violations=2"
+      }
+    }
+  }
+]

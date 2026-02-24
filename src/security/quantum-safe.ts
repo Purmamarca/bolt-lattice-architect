@@ -7,6 +7,7 @@
  */
 
 import * as crypto from 'crypto';
+import { DEFAULT_POLICY } from '../lib/security-policy';
 
 // ============================================================================
 // TYPES & INTERFACES
@@ -57,7 +58,7 @@ export interface DerivedKey {
 // CONSTANTS
 // ============================================================================
 
-const APPROVED_IPS = ['10.0.0.5', '192.168.1.50'];
+const APPROVED_IPS = DEFAULT_POLICY.approvedIPs;
 const DEFAULT_LATTICE_LEVEL = 5;
 const DEFAULT_ALGORITHM = 'ML-KEM-768';
 
